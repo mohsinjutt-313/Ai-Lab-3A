@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Crop Yield Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Crop Yield Predictor</h1>
+
+      <form id="predictForm">
+        <label>Crop</label>
+        <select name="Crop" id="Crop">
+          {% for c in crops %}
+          <option value="{{ c }}">{{ c }}</option>
+          {% endfor %}
+        </select>
+
+        <label>Crop Year</label>
+        <input type="number" name="Crop_Year" id="Crop_Year" value="2020" required>
+
+        <label>Season</label>
+        <select name="Season" id="Season">
+          {% for s in seasons %}
+          <option value="{{ s }}">{{ s }}</option>
+          {% endfor %}
+        </select>
+
+        <label>State (numeric code)</label>
+        <select name="State" id="State">
+          {% for st in states %}
+          <option value="{{ st }}">{{ st }}</option>
+          {% endfor %}
+        </select>
+
+        <label>Area</label>
+        <input type="number" step="any" name="Area" id="Area" value="1000" required>
+
+        <label>Annual Rainfall</label>
+        <input type="number" step="any" name="Annual_Rainfall" id="Annual_Rainfall" value="1000" required>
+
+        <label>Fertilizer</label>
+        <input type="number" step="any" name="Fertilizer" id="Fertilizer" value="10000" required>
+
+        <label>Pesticide</label>
+        <input type="number" step="any" name="Pesticide" id="Pesticide" value="100" required>
+
+        <button type="submit">Predict Yield</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
